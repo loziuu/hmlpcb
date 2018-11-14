@@ -4,7 +4,7 @@ public class Command {
     private final CommandType type;
     private final String question;
 
-    public Command(CommandType type, String question) {
+    private Command(CommandType type, String question) {
         this.type = type;
         this.question = question;
     }
@@ -13,11 +13,11 @@ public class Command {
         return new Command(CommandType.NORMAL, question);
     }
 
-    public static Command greeting(String question) {
+    static Command greeting(String question) {
         return new Command(CommandType.GREETING, question);
     }
 
-    public CommandType getType() {
+    CommandType getType() {
         return type;
     }
 

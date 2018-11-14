@@ -1,3 +1,4 @@
 rootProject.name = 'hmlpcb'
 include 'core'
+include 'app'
 

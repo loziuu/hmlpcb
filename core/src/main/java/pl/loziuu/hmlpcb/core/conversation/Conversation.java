@@ -1,19 +1,19 @@
 package pl.loziuu.hmlpcb.core.conversation;
 
 import pl.loziuu.hmlpcb.core.bot.Bot;
+import pl.loziuu.hmlpcb.core.bot.Command;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 
-import static pl.loziuu.hmlpcb.core.conversation.MessageAuthor.*;
 import static pl.loziuu.hmlpcb.core.conversation.MessageAuthor.BOT;
+import static pl.loziuu.hmlpcb.core.conversation.MessageAuthor.USER;
 
 public class Conversation {
     private final UUID id = UUID.randomUUID();
     private final List<Message> messages;
-
     private final Bot bot;
 
     public Conversation(Bot bot) {
@@ -21,13 +21,13 @@ public class Conversation {
         this.messages = new ArrayList<>();
     }
 
-    public static Conversation withMessages(List<Message> messages) {
-        return new Conversation(messages);
-    }
-
-    public Conversation(List<Message> messages) {
+    private Conversation(List<Message> messages) {
         this.messages = messages;
         this.bot = new Bot(new HashSet<>());
+    }
+
+    public static Conversation withMessages(List<Message> messages) {
+        return new Conversation(messages);
     }
 
     public UUID getId() {
@@ -38,9 +38,9 @@ public class Conversation {
         return messages;
     }
 
-    public void send(String message) {
-        addMessage(USER, message);
-        addMessage(BOT, bot.tell(message));
+    public void send(Command command) {
+        addMessage(USER, command.getQuestion());
+        addMessage(BOT, bot.tell(command));
     }
 
     private void addMessage(MessageAuthor author, String message) {

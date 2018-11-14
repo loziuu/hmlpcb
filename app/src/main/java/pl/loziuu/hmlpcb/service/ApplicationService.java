@@ -1,7 +1,7 @@
 package pl.loziuu.hmlpcb.service;
 
-import org.springframework.stereotype.Service;
 import pl.loziuu.hmlpcb.core.bot.Bot;
+import pl.loziuu.hmlpcb.core.bot.Command;
 import pl.loziuu.hmlpcb.core.conversation.Conversation;
 import pl.loziuu.hmlpcb.repository.ConversationRepository;
 import pl.loziuu.hmlpcb.repository.model.ConversationModel;
@@ -10,7 +10,6 @@ import reactor.core.publisher.Mono;
 import java.util.HashSet;
 import java.util.UUID;
 
-@Service
 public class ApplicationService {
     private final ConversationRepository repository;
 
@@ -31,7 +30,7 @@ public class ApplicationService {
     public Mono<ConversationModel> sendToBot(UUID conversationId, String message) {
         return repository.findById(conversationId)
                 .map(ConversationMapper::toCore)
-                    .doOnNext(core -> core.send(message))
+                .doOnNext(core -> core.send(Command.normal(message)))
                 .flatMap(this::saveConversation);
     }
 

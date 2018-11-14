@@ -48,13 +48,13 @@ public class Message {
         if (this == o) return true;
         if (!(o instanceof Message)) return false;
         Message message1 = (Message) o;
-        return Objects.equals(getMessage(), message1.getMessage()) &&
-                getAuthor() == message1.getAuthor() &&
-                Objects.equals(getSendAt(), message1.getSendAt());
+        return getOrder() == message1.getOrder() &&
+                Objects.equals(getMessage(), message1.getMessage()) &&
+                getAuthor() == message1.getAuthor();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getMessage(), getAuthor(), getSendAt());
+        return Objects.hash(getOrder(), getMessage(), getAuthor());
     }
 }

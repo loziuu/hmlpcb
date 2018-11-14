@@ -18,7 +18,7 @@ public class CommandReply {
     }
 
     public boolean isApplicable(Command command) {
-        return command.getType().equals(CommandType.GREETING) ||
+        return type.equals(CommandType.GREETING) && type.equals(command.getType())  ||
                 type.equals(command.getType()) && question.startsWith(command.getQuestion());
     }
 

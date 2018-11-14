@@ -1,6 +1,9 @@
 package pl.loziuu.hmlpcb.core.bot;
 
 import org.junit.Test;
+import pl.loziuu.hmlpcb.core.conversation.Conversation;
+import pl.loziuu.hmlpcb.core.conversation.Message;
+import pl.loziuu.hmlpcb.core.conversation.MessageAuthor;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -8,10 +11,13 @@ public class BotCommandTest {
     private final Bot bot = BotFixtures.bot();
 
     @Test
-    public void greetingCommandShouldReturnGreetingFromBot() {
-        String reply = bot.tell(Command.greeting("Hello!"));
+    public void greetingCommandShouldStartNewConversation() {
+        Conversation conversation = bot.greet("Hi");
 
-        assertThat(reply).isEqualTo("Hello!");
+        assertThat(conversation.getMessages())
+                .contains(new Message(MessageAuthor.USER, 0, "Hi"));
+        assertThat(conversation.getMessages())
+                .contains(new Message(MessageAuthor.BOT, 1, "Hello!"));
     }
 
     @Test

@@ -13,7 +13,7 @@ public class Bot {
 
     public Conversation greet(String message) {
         Conversation conversation = new Conversation(this);
-        conversation.send(message);
+        conversation.send(Command.greeting(message));
         return conversation;
     }
 
