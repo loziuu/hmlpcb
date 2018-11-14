@@ -21,13 +21,13 @@ public class Conversation {
         this.messages = new ArrayList<>();
     }
 
-    private Conversation(List<Message> messages) {
+    private Conversation(List<Message> messages, Bot bot) {
         this.messages = messages;
-        this.bot = new Bot(new HashSet<>());
+        this.bot = bot;
     }
 
-    public static Conversation withMessages(List<Message> messages) {
-        return new Conversation(messages);
+    public static Conversation withMessages(List<Message> messages, Bot bot) {
+        return new Conversation(messages, bot);
     }
 
     public UUID getId() {
