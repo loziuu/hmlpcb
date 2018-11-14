@@ -3,6 +3,7 @@ package pl.loziuu.hmlpcb.controllers;
 import org.springframework.web.bind.annotation.*;
 import pl.loziuu.hmlpcb.repository.model.ConversationModel;
 import pl.loziuu.hmlpcb.service.ApplicationService;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.UUID;
@@ -14,6 +15,11 @@ public class ReactiveBotController {
 
     public ReactiveBotController(ApplicationService applicationService) {
         this.applicationService = applicationService;
+    }
+
+    @GetMapping("/conversations")
+    public Flux<ConversationModel> getConversation() {
+        return applicationService.getConversations();
     }
 
     @GetMapping("/conversations/{conversationId}")
