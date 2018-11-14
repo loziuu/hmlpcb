@@ -16,13 +16,13 @@ public class InMemoryFactoryTest {
     public void createBotWithCachedReplies() {
         BotFactory factory = new InMemoryBotFactory(
                 CommandRepliesBuilder.getBuilder()
-                        .greeting("Hi", "This is bot factory test.")
+                        .greeting("Hi", "This is bot factory testLevenshteinAlgorithm.")
                         .build());
 
         Bot bot = factory.createBot();
         Conversation conversation = bot.greet("Hi");
 
         assertThat(conversation.getMessages()).contains(
-                new Message(MessageAuthor.BOT, 1, "This is bot factory test."));
+                new Message(MessageAuthor.BOT, 1, "This is bot factory testLevenshteinAlgorithm."));
     }
 }

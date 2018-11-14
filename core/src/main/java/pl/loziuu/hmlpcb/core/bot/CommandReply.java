@@ -6,11 +6,13 @@ public class CommandReply {
     private final CommandType type;
     private final String question;
     private final String answer;
+    private final CommandApplicablePolicy policy;
 
     public CommandReply(CommandType type, String question, String answer) {
         this.type = type;
         this.question = question;
         this.answer = answer;
+        this.policy = new LevenshteinBasedPolicy(5);
     }
 
     public String getAnswer() {
@@ -19,7 +21,8 @@ public class CommandReply {
 
     public boolean isApplicable(Command command) {
         return type.equals(CommandType.GREETING) && type.equals(command.getType())  ||
-                type.equals(command.getType()) && question.startsWith(command.getQuestion());
+                type.equals(command.getType()) && command.getQuestion().startsWith(question) ||
+                policy.isApplicable(question, command);
     }
 
     @Override
