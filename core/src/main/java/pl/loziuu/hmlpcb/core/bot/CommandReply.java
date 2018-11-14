@@ -1,5 +1,8 @@
 package pl.loziuu.hmlpcb.core.bot;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 public class CommandReply {
@@ -8,7 +11,11 @@ public class CommandReply {
     private final String answer;
     private final CommandApplicablePolicy policy;
 
-    public CommandReply(CommandType type, String question, String answer) {
+    @JsonCreator
+    public CommandReply(
+            @JsonProperty("type") CommandType type,
+            @JsonProperty("question") String question,
+            @JsonProperty("answer") String answer) {
         this.type = type;
         this.question = question;
         this.answer = answer;

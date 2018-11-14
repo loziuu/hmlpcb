@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import pl.loziuu.hmlpcb.core.bot.BotFactory;
 import pl.loziuu.hmlpcb.core.bot.CommandReply;
 import pl.loziuu.hmlpcb.core.bot.InMemoryBotFactory;
+import pl.loziuu.hmlpcb.core.bot.JsonBotFactory;
 import pl.loziuu.hmlpcb.core.bot.factory.CommandRepliesBuilder;
 import pl.loziuu.hmlpcb.repository.ConversationRepository;
 import pl.loziuu.hmlpcb.service.ApplicationService;
@@ -31,10 +32,6 @@ public class AppConfiguration {
 
     @Bean
     public BotFactory botFactory() {
-        Set<CommandReply> replies = CommandRepliesBuilder.getBuilder()
-                .greeting("Hi", "Oh hi there!")
-                .normal("How are you today?", "I'm fine, thanks!")
-                .build();
-        return new InMemoryBotFactory(replies);
+        return new JsonBotFactory();
     }
 }
