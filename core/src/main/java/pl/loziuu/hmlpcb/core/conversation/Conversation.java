@@ -12,22 +12,24 @@ import static pl.loziuu.hmlpcb.core.conversation.MessageAuthor.BOT;
 import static pl.loziuu.hmlpcb.core.conversation.MessageAuthor.USER;
 
 public class Conversation {
-    private final UUID id = UUID.randomUUID();
+    private final UUID id;
     private final List<Message> messages;
     private final Bot bot;
 
     public Conversation(Bot bot) {
         this.bot = bot;
         this.messages = new ArrayList<>();
+        this.id = UUID.randomUUID();
     }
 
-    private Conversation(List<Message> messages, Bot bot) {
+    private Conversation(UUID uuid, List<Message> messages, Bot bot) {
+        this.id = uuid;
         this.messages = messages;
         this.bot = bot;
     }
 
-    public static Conversation withMessages(List<Message> messages, Bot bot) {
-        return new Conversation(messages, bot);
+    public static Conversation withMessages(UUID uuid, List<Message> messages, Bot bot) {
+        return new Conversation(uuid, messages, bot);
     }
 
     public UUID getId() {

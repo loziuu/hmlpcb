@@ -15,6 +15,6 @@ public class ConversationMapper {
         List<Message> messages = model.getMessages().stream()
                 .map(MessageMapper::toCore)
                 .collect(Collectors.toList());
-        return Conversation.withMessages(messages, bot);
+        return Conversation.withMessages(model.getUuid(), messages, bot);
     }
 }
