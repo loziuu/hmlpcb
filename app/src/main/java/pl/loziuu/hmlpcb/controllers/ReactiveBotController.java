@@ -3,6 +3,7 @@ package pl.loziuu.hmlpcb.controllers;
 import org.springframework.web.bind.annotation.*;
 import pl.loziuu.hmlpcb.repository.model.ConversationModel;
 import pl.loziuu.hmlpcb.service.ApplicationService;
+import pl.loziuu.hmlpcb.shared.FriendlyId;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -23,14 +24,14 @@ public class ReactiveBotController {
     }
 
     @GetMapping("/conversations/{conversationId}")
-    public Mono<ConversationModel> getConversation(@PathVariable("conversationId") UUID conversationId) {
-        return applicationService.getConversation(conversationId);
+    public Mono<ConversationModel> getConversation(@PathVariable("conversationId") String conversationId) {
+        return applicationService.getConversation(FriendlyId.showMeYourTrueNature(conversationId));
     }
 
     @PostMapping("/conversations/{conversationId}/send")
-    public Mono<ConversationModel> sendMessageToConversation(@PathVariable("conversationId") UUID conversationId,
+    public Mono<ConversationModel> sendMessageToConversation(@PathVariable("conversationId") String conversationId,
                                                              @RequestBody Message message) {
-        return applicationService.sendToBot(conversationId, message.getContent());
+        return applicationService.sendToBot(FriendlyId.showMeYourTrueNature(conversationId), message.getContent());
     }
 
     @PostMapping("/bot/greet")

@@ -1,8 +1,10 @@
 package pl.loziuu.hmlpcb.repository.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import pl.loziuu.hmlpcb.core.conversation.Conversation;
+import pl.loziuu.hmlpcb.shared.FriendlyId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +33,13 @@ public class ConversationModel {
         this.messages = messages;
     }
 
+    @JsonIgnore
     public UUID getUuid() {
         return uuid;
+    }
+
+    public String getId() {
+        return FriendlyId.makeItFriendly(uuid);
     }
 
     public void setUuid(UUID uuid) {

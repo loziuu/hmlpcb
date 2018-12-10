@@ -1,17 +1,27 @@
 [
-    {
-      "type": "NORMAL",
-      "question": "How are you?",
-      "answer": "I'm fine, thanks."
-    },
-    {
-      "type": "NORMAL",
-      "question": "What do you think about Java?",
-      "answer": "It's getting better and better every year. Keep an eye out on it."
-    },
-    {
-      "type": "GREETING",
-      "question": "Hi",
-      "answer": "Welcome!"
-    }
+  {
+    "type": "NORMAL",
+    "question": "How are you?",
+    "answer": "I'm fine, thanks."
+  },
+  {
+    "type": "NORMAL",
+    "question": "What do you think about Java?",
+    "answer": "It's getting better and better every year. Keep an eye out on it."
+  },
+  {
+    "type": "NORMAL",
+    "question": "Tell me something about Java?",
+    "answer": "It's object oriented programming language which requires basic knowledge of inheritance, encapsulation and SOLID principles to be very effective. It has been adapting to functional programming lately."
+  },
+  {
+    "type": "GREETING",
+    "question": "Hi",
+    "answer": "Welcome!"
+  },
+  {
+    "type": "NORMAL",
+    "question": "Thanks",
+    "answer": "Sure, no problem. I will always be here if you need me :)"
+  }
 ]
