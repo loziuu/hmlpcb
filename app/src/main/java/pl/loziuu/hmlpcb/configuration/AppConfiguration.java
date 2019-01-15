@@ -6,14 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import pl.loziuu.hmlpcb.core.bot.BotFactory;
-import pl.loziuu.hmlpcb.core.bot.CommandReply;
-import pl.loziuu.hmlpcb.core.bot.InMemoryBotFactory;
 import pl.loziuu.hmlpcb.core.bot.JsonBotFactory;
-import pl.loziuu.hmlpcb.core.bot.factory.CommandRepliesBuilder;
 import pl.loziuu.hmlpcb.repository.ConversationRepository;
 import pl.loziuu.hmlpcb.service.ApplicationService;
-
-import java.util.Set;
 
 @Configuration
 @EnableMongoRepositories(basePackages = "pl.loziuu")
@@ -34,4 +29,6 @@ public class AppConfiguration {
     public BotFactory botFactory() {
         return new JsonBotFactory();
     }
+
+
 }

@@ -14,8 +14,10 @@ import static java.util.stream.Collectors.toList;
 
 @Document(collection = "conversations")
 public class ConversationModel {
+
     @Id
     private UUID uuid;
+
     private List<MessageModel> messages = new ArrayList<>();
 
     public static ConversationModel fromCore(Conversation conversation) {

@@ -34,6 +34,7 @@ public class ReactiveBotController {
         return applicationService.sendToBot(FriendlyId.showMeYourTrueNature(conversationId), message.getContent());
     }
 
+    @CrossOrigin
     @PostMapping("/bot/greet")
     public Mono<ConversationModel> startNewConversation(@RequestBody Message message) {
         return applicationService.startNewConversation(message.getContent());

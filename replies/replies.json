@@ -6,6 +6,17 @@
   },
   {
     "type": "NORMAL",
+    "question": "How are you today?",
+    "answer": "I'm fine, thanks. How about you?"
+  },
+
+  {
+    "type": "NORMAL",
+    "question": "Im good",
+    "answer": "Good to hear!"
+  },
+  {
+    "type": "NORMAL",
     "question": "What do you think about Java?",
     "answer": "It's getting better and better every year. Keep an eye out on it."
   },
