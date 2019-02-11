@@ -26,7 +26,7 @@ public class CommandReply {
         return answer;
     }
 
-    public boolean isApplicable(Command command) {
+    boolean isApplicable(Command command) {
         return type.equals(CommandType.GREETING) && type.equals(command.getType())  ||
                 type.equals(command.getType()) && command.getQuestion().startsWith(question) ||
                 policy.isApplicable(question, command);

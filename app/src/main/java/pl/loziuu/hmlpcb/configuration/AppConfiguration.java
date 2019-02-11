@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import pl.loziuu.hmlpcb.core.bot.BotFactory;
-import pl.loziuu.hmlpcb.core.bot.JsonBotFactory;
+import pl.loziuu.hmlpcb.repository.BotResponseRepository;
 import pl.loziuu.hmlpcb.repository.ConversationRepository;
 import pl.loziuu.hmlpcb.service.ApplicationService;
 
@@ -15,9 +15,11 @@ import pl.loziuu.hmlpcb.service.ApplicationService;
 @EnableAutoConfiguration(exclude = {MongoRepositoriesAutoConfiguration.class})
 public class AppConfiguration {
     private final ConversationRepository repository;
+    private final BotResponseRepository botResponseRepository;
 
-    public AppConfiguration(ConversationRepository repository) {
+    public AppConfiguration(ConversationRepository repository, BotResponseRepository botResponseRepository) {
         this.repository = repository;
+        this.botResponseRepository = botResponseRepository;
     }
 
     @Bean
@@ -27,8 +29,6 @@ public class AppConfiguration {
 
     @Bean
     public BotFactory botFactory() {
-        return new JsonBotFactory();
+        return new MongoBotFactory(botResponseRepository);
     }
-
-
 }

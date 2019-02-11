@@ -2,9 +2,9 @@ package pl.loziuu.hmlpcb.core.bot;
 
 import java.util.Set;
 
-public final class BotFixtures {
+final class BotFixtures {
 
-    public static Bot bot() {
+    static Bot bot() {
         return new Bot(replies());
     }
 
